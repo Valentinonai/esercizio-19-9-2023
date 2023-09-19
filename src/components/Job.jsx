@@ -1,7 +1,7 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addFavourite, deleteFavourite, isLoadingOn } from "../redux/actions";
+import { addFavourite, changeSearch, deleteFavourite, isLoadingOn } from "../redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const Job = ({ data }) => {
               to={`/${data.company_name}`}
               onClick={() => {
                 dispatch(isLoadingOn(true));
+                dispatch(changeSearch(false));
               }}
             >
               {data.company_name}
@@ -39,6 +40,7 @@ const Job = ({ data }) => {
               variant="info"
               onClick={() => {
                 dispatch(addFavourite(data));
+                dispatch(changeSearch(false));
               }}
             >
               Add to favourites

@@ -20,6 +20,7 @@ const MainSearch = () => {
   };
 
   const url = baseEndpoint + query + "&limit=20";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(changeSearch(true));
