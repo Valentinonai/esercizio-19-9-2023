@@ -1,4 +1,4 @@
-import { CREATE_LIST, ERROR_ALERT, IS_LOADING_OFF, IS_LOADING_ON } from "../actions";
+import { CREATE_LIST, ERROR_ALERT, ERROR_OFF, IS_LOADING_OFF, IS_LOADING_ON } from "../actions";
 
 const initialState = {
   content: [],
@@ -32,6 +32,13 @@ const jobsReducer = (state = initialState, action) => {
         ...state,
         error: true,
         errorMessage: action.payload,
+      };
+    }
+    case ERROR_OFF: {
+      return {
+        ...state,
+        error: action.payload,
+        errorMessage: "",
       };
     }
     default:

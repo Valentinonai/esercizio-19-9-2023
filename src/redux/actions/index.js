@@ -6,6 +6,7 @@ export const PREV_QUERY = "PREV_QUERY";
 export const IS_LOADING_ON = "IS_LOADING_ON";
 export const IS_LOADING_OFF = "IS_LOADING_OFF";
 export const ERROR_ALERT = "ERROR_ALERT";
+export const ERROR_OFF = "ERROR_OFF";
 
 export const deleteFavourite = (i) => ({ type: DELETE_FAV, payload: i });
 export const addFavourite = (data) => ({ type: ADD_COMPANY, payload: data });
@@ -20,6 +21,7 @@ export const getJobs = (url) => {
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: CREATE_LIST, payload: data });
+        dispatch({ type: ERROR_OFF, payload: false });
       } else {
         switch (response.status) {
           case 404: {
@@ -50,6 +52,7 @@ export const mainSearch = (url) => {
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: CREATE_LIST, payload: data });
+        dispatch({ type: ERROR_OFF, payload: false });
       } else {
         switch (response.status) {
           case 404: {
